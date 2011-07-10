@@ -1,32 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!--
- * Copyright (C) 2009 The Sipdroid Open Source Project
- * 
- * This file is part of Sipdroid (http://www.sipdroid.org)
- * 
- * Sipdroid is free software; you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation; either version 3 of the License, or
- * (at your option) any later version.
- * 
- * This source code is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
- * 
- * You should have received a copy of the GNU General Public License
- * along with this source code; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
-/////////////////////////////////////////////////////////////////////
-// these are the main definitions of Sipdroid
-// for modifying them additional terms according to section 7, GPL apply
-// see ADDITIONAL_TERMS.txt
-/////////////////////////////////////////////////////////////////////
- -->
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-	package="org.sipdroid.sipua"
-    android:versionName="2.2.2 beta"
-    android:versionCode="85" android:installLocation="auto">
+	android:versionName="2.2.2 beta"
+    android:versionCode="85" android:installLocation="auto" package="org.ruby.client">
 	<uses-sdk android:minSdkVersion="3" android:targetSdkVersion="4"/>
 	<supports-screens
           android:normalScreens="true"
@@ -41,14 +16,14 @@
 	<uses-feature android:name="android.hardware.wifi" android:required="false"/>
 	<uses-feature android:name="android.hardware.camera" android:required="false"/>
 	<application android:icon="@drawable/icon64" android:label="@string/app_name">
-        <activity android:name="org.sipdroid.sipua.ui.Sipdroid" android:label="@string/app_name" android:launchMode="singleInstance"
+        <activity android:name="org.ruby.client.ui.Ruby" android:label="@string/app_name" android:launchMode="singleInstance"
         	android:configChanges="orientation|keyboardHidden">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="org.sipdroid.sipua.ui.PSTN" android:label="@string/pstn_name"
+        <activity android:name="org.ruby.client.ui.PSTN" android:label="@string/pstn_name"
         	android:icon="@drawable/ic_launcher_phone">
             <intent-filter>
                 <action android:name="android.intent.action.SENDTO" />
@@ -57,7 +32,7 @@
                 <data android:scheme="smsto" />
             </intent-filter>
         </activity>
-        <activity android:name="org.sipdroid.sipua.ui.SIP" android:label="@string/app_name">
+        <activity android:name="org.ruby.client.ui.SIP" android:label="@string/app_name">
             <intent-filter>
                 <action android:name="android.intent.action.SENDTO" />
                 <category android:name="android.intent.category.DEFAULT" />
@@ -66,15 +41,15 @@
             </intent-filter>
 
         </activity>
-        <activity android:name="org.sipdroid.sipua.ui.AutoAnswer" android:label="@string/app_name"/>
-        <activity android:name="org.sipdroid.sipua.ui.ChangeAccount" android:label="@string/app_name"/>
-        <activity android:name="org.sipdroid.sipua.ui.SIPUri" android:label="@string/app_name"
+        <activity android:name="org.ruby.client.ui.AutoAnswer" android:label="@string/app_name"/>
+        <activity android:name="org.ruby.client.ui.ChangeAccount" android:label="@string/app_name"/>
+        <activity android:name="org.ruby.client.ui.SIPUri" android:label="@string/app_name"
         		android:theme="@android:style/Theme.Dialog">
             <intent-filter>
                 <action android:name="android.intent.action.CALL" />
                 <category android:name="android.intent.category.DEFAULT" />
                 <data android:scheme="sip" />
-                <data android:scheme="sipdroid" />
+                <data android:scheme="ruby" />
             </intent-filter>
             <intent-filter>
                 <action android:name="android.intent.action.SENDTO" />
@@ -90,39 +65,39 @@
                 <data android:scheme="sip" />
             </intent-filter>
         </activity>
-        <activity android:name="org.sipdroid.sipua.ui.Activity2" android:label="@string/app_name"
+        <activity android:name="org.ruby.client.ui.Activity2" android:label="@string/app_name"
         	android:excludeFromRecents="true" android:taskAffinity=""/>
-        <activity android:name="org.sipdroid.sipua.ui.Settings" android:label="@string/app_name"
+        <activity android:name="org.ruby.client.ui.Settings" android:label="@string/app_name"
         	android:configChanges="orientation|keyboardHidden">
         	android:excludeFromRecents="true" android:taskAffinity="">
         </activity>
         <activity
-	   android:name="org.sipdroid.codecs.Codecs$CodecSettings"
+	   android:name="org.ruby.codecs.Codecs$CodecSettings"
 	   android:label="@string/app_name" >
         </activity>
-        <activity android:name="org.sipdroid.sipua.ui.VideoCamera" android:label="@string/menu_video"
+        <activity android:name="org.ruby.client.ui.VideoCamera" android:label="@string/menu_video"
 	        android:excludeFromRecents="true" android:taskAffinity=""
 			android:theme="@android:style/Theme.Black.NoTitleBar.Fullscreen"
 	        android:screenOrientation="landscape"
 	        android:clearTaskOnLaunch="true"
 	        android:configChanges="orientation|keyboardHidden">
         </activity>
-        <activity android:name="org.sipdroid.sipua.ui.InCallScreen" android:label="@string/app_name"
+        <activity android:name="org.ruby.client.ui.InCallScreen" android:label="@string/app_name"
 	        android:excludeFromRecents="true" android:taskAffinity=""
 	        android:launchMode="singleInstance">
         </activity>
-	    <receiver android:name="org.sipdroid.sipua.ui.OneShotAlarm"/>
-	    <receiver android:name="org.sipdroid.sipua.ui.OneShotAlarm2"/>
-	    <receiver android:name="org.sipdroid.sipua.ui.LoopAlarm"/>
-	    <receiver android:name="org.sipdroid.sipua.ui.OwnWifi"/>
-	    <receiver android:name="org.sipdroid.sipua.ui.OneShotLocation"/>
-	    <receiver android:name="org.sipdroid.sipua.ui.LoopLocation"/>
-	    <receiver android:name="org.sipdroid.sipua.ui.Caller">
+	    <receiver android:name="org.ruby.client.ui.OneShotAlarm"/>
+	    <receiver android:name="org.ruby.client.ui.OneShotAlarm2"/>
+	    <receiver android:name="org.ruby.client.ui.LoopAlarm"/>
+	    <receiver android:name="org.ruby.client.ui.OwnWifi"/>
+	    <receiver android:name="org.ruby.client.ui.OneShotLocation"/>
+	    <receiver android:name="org.ruby.client.ui.LoopLocation"/>
+	    <receiver android:name="org.ruby.client.ui.Caller">
 	        <intent-filter android:priority="-1">
 	        	<action android:name="android.intent.action.NEW_OUTGOING_CALL" />
 	        </intent-filter>
 	    </receiver>
-        <receiver android:name="org.sipdroid.sipua.ui.Receiver" android:enabled="true">
+        <receiver android:name="org.ruby.client.ui.Receiver" android:enabled="true">
 	      	<intent-filter>
 	        	<action android:name="android.intent.action.BOOT_COMPLETED" />
 	        	<action android:name="android.intent.action.EXTERNAL_APPLICATIONS_AVAILABLE" />
@@ -131,10 +106,10 @@
 	      	<intent-filter>
 	        	<action android:name="android.intent.action.PACKAGE_REPLACED" />
 	        	<data android:scheme="package" />
-	        	<data android:path="org.sipdroid.sipua" />
+	        	<data android:path="org.ruby.client" />
 	      	</intent-filter>
 	    </receiver>
-    	<service android:name="org.sipdroid.sipua.ui.RegisterService" />
+    	<service android:name="org.ruby.client.ui.RegisterService" />
     </application>
 	<uses-permission android:name="android.permission.INTERNET"></uses-permission>
 	<uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS"></uses-permission>

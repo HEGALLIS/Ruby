@@ -1,22 +1,4 @@
-/*
- * Copyright (C) 2009 The Sipdroid Open Source Project
- * 
- * This file is part of Sipdroid (http://www.sipdroid.org)
- * 
- * Sipdroid is free software; you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation; either version 3 of the License, or
- * (at your option) any later version.
- * 
- * This source code is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
- * 
- * You should have received a copy of the GNU General Public License
- * along with this source code; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
- */
+
 
 #include <stdlib.h>
 #include <stdio.h>
@@ -44,14 +26,14 @@
 static int codec_open = 0;
 
 static JavaVM *gJavaVM;
-const char *kInterfacePath = "org/sipdroid/pjlib/g722";
+const char *kInterfacePath = "org/ruby/pjlib/g722";
 
 g722_encode_state_t enc_state;
 g722_decode_state_t dec_state;
 
 //bit_rate=64000;			// 48000, 56000 or 64000
 extern "C"
-JNIEXPORT jint JNICALL Java_org_sipdroid_codecs_G722_open
+JNIEXPORT jint JNICALL Java_org_ruby_codecs_G722_open
   (JNIEnv *env, jobject obj, jint bitrate) {
 	int ret;
 
@@ -65,7 +47,7 @@ JNIEXPORT jint JNICALL Java_org_sipdroid_codecs_G722_open
 }
 
 extern "C"
-JNIEXPORT jint JNICALL Java_org_sipdroid_codecs_G722_encode
+JNIEXPORT jint JNICALL Java_org_ruby_codecs_G722_encode
     (JNIEnv *env, jobject obj, jshortArray lin, jint offset, jbyteArray encoded, jint size) {
 
 	jbyte adpcmdata[BLOCK_LEN];
@@ -113,7 +95,7 @@ JNIEXPORT jint JNICALL Java_org_sipdroid_codecs_G722_encode
 }
 
 extern "C"
-JNIEXPORT jint JNICALL Java_org_sipdroid_codecs_G722_decode
+JNIEXPORT jint JNICALL Java_org_ruby_codecs_G722_decode
     (JNIEnv *env, jobject obj, jbyteArray encoded, jshortArray lin, jint size) {
 
  //   jbyte buffer [MAX_BYTES_DEC_PER_FRAME * MAX_INPUT_FRAMES * ( MAX_LBRR_DELAY + 1 ) ];
@@ -148,7 +130,7 @@ JNIEXPORT jint JNICALL Java_org_sipdroid_codecs_G722_decode
 
 
 extern "C"
-JNIEXPORT void JNICALL Java_org_sipdroid_codecs_G722_close
+JNIEXPORT void JNICALL Java_org_ruby_codecs_G722_close
     (JNIEnv *env, jobject obj) {
 
 	if (--codec_open != 0)

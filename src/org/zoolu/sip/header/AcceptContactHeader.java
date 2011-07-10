@@ -4,7 +4,6 @@ package org.zoolu.sip.header;
 /** 
  * SIP Header AcceptContact
  * 
- * Added by mandrajg for Sipdroid open source project.
  * Used with MMTel/IMS. 
  */
 

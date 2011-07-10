@@ -1,32 +1,8 @@
-/*
- * Copyright (C) 2005 Luca Veltri - University of Parma - Italy
- * Copyright (C) 2009 The Sipdroid Open Source Project
- * 
- * This file is part of MjSip (http://www.mjsip.org)
- * 
- * MjSip is free software; you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation; either version 2 of the License, or
- * (at your option) any later version.
- * 
- * MjSip is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
- * 
- * You should have received a copy of the GNU General Public License
- * along with MjSip; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
- * 
- * Author(s):
- * Luca Veltri (luca.veltri@unipr.it)
- * Nitin Khanna, Hughes Systique Corp. (Reason: Android specific change, optmization, bug fix) 
- */
 
 package org.zoolu.sip.provider;
 
-import org.sipdroid.sipua.ui.Receiver;
-import org.sipdroid.sipua.ui.Sipdroid;
+import org.ruby.client.ui.Receiver;
+import org.ruby.client.ui.Ruby;
 import org.zoolu.net.*;
 import org.zoolu.sip.header.*;
 import org.zoolu.sip.message.Message;
@@ -996,7 +972,7 @@ public class SipProvider implements Configurable, TransportListener,
 					printLog("NOT a SIP message: discarded\r\n", LogLevel.LOW);
 				return;
 			}
-			if (!Sipdroid.release)
+			if (!Ruby.release)
 				printLog("received new SIP message "+msg.getRequestLine()+" "+msg.getStatusLine(), LogLevel.HIGH); // modified
 			printLog("message:\r\n" + msg.toString(), LogLevel.LOWER);
 
@@ -1191,7 +1167,7 @@ public class SipProvider implements Configurable, TransportListener,
 	public void onReceivedMessage(Transport transport, Message msg) {
 		if (pm == null) {
 			pm = (PowerManager) Receiver.mContext.getSystemService(Context.POWER_SERVICE);
-			wl = pm.newWakeLock(PowerManager.PARTIAL_WAKE_LOCK, "Sipdroid.SipProvider");
+			wl = pm.newWakeLock(PowerManager.PARTIAL_WAKE_LOCK, "Ruby.SipProvider");
 		}
 		wl.acquire(); // modified
 		processReceivedMessage(msg);
@@ -1205,7 +1181,7 @@ public class SipProvider implements Configurable, TransportListener,
 			ConnectionIdentifier conn_id = new ConnectionIdentifier(
 					(ConnectedTransport) transport);
 			removeConnection(conn_id);
-			if (Sipdroid.on(Receiver.mContext))
+			if (Ruby.on(Receiver.mContext))
 				Receiver.engine(Receiver.mContext).register(); // modified
 		}
 		if (error != null)
@@ -1370,7 +1346,7 @@ public class SipProvider implements Configurable, TransportListener,
 
 	/** Adds a new string to the default Log */
 	private final void printLog(String str, int level) {
-		if (Sipdroid.release) return;
+		if (Ruby.release) return;
 		if (event_log != null) {
 			String provider_id = (host_ipaddr == null) ? Integer
 					.toString(host_port) : host_ipaddr.toString() + ":"

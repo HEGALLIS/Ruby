@@ -1,50 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!--
- * Copyright (C) 2009 The Sipdroid Open Source Project
- *
- * This file is part of Sipdroid (http://www.sipdroid.org)
- *
- * Sipdroid is free software; you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation; either version 3 of the License, or
- * (at your option) any later version.
- *
- * This source code is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
- *
- * You should have received a copy of the GNU General Public License
- * along with this source code; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 
-/////////////////////////////////////////////////////////////////////
-// these are the main messages of Sipdroid
-// for modifying them additional terms according to section 7, GPL apply
-// see ADDITIONAL_TERMS.txt
-/////////////////////////////////////////////////////////////////////
--->
 
 <resources>
-<string name="app_name">Sipdroid</string>
+<string name="app_name">Ruby</string>
 <string name="pstn_name">Telefon</string>
-<string name="sip_name">Sipdroid, când e disponibil</string>
+<string name="sip_name">Ruby, când e disponibil</string>
 
-<string name="about">Sipdroid este un client SIP open-source pentru Android
-\n
-\nVezi http://sipdroid.org pentru mai multe informaţii
-\n
-\nVersiune ${VERSION}
-\nAplicaţia a fost lansată pentru testare.
-\n
-\nCopyright (C) 2009 The Sipdroid Open Source Project (http://sipdroid.org)
-\nCopyright (C) 2008 Hughes Systique Corporation, USA (http://hsc.com)
-\nCopyright (C) 2006 The Android Open Source Project (http://android.com)
-\nCopyright (C) 2005 Luca Veltri - University of Parma - Italy (http://mjsip.org)
-\n
-\nAcest program este gratuit; se poate redistribui sau/şi modifica în termenii specificaţi de GNU General Public Licence, asa cum este publicată de Free Software Foundation; fie versiunea 3 a licenţei, fie (la optiunea ta) orice alta versiune ulterioară. 
-\n
-\nAcest program este distribuit în speranţa că va fi folositor, dar FĂRĂ NICI O GARANŢIE; A se vedea GNU General Public License pentru mai multe detalii (http://www.gnu.org/licenses).</string>
+<string name="about">Ruby</string>
 
 <string name="reg">Înregistrare...</string>
 <string name="regok">Înregistrat</string>
@@ -82,8 +44,8 @@
 <string name="settings_check">Verifică dacă operatorul de telefonie mobilă permite VoIP</string>
 <string name="settings_pref">Tip apelare preferat</string>
     <string-array name="pref_display_values">
-		<item>Sipdroid</item>
-        <item>Sipdroid, când e disponibil</item>
+		<item>Ruby</item>
+        <item>Ruby, când e disponibil</item>
         <item>Apelează</item>
 		<item>Always ask</item>
     </string-array>

@@ -1,26 +1,3 @@
-/*
- * Copyright (C) 2005 Luca Veltri - University of Parma - Italy
- * Copyright (C) 2009 The Sipdroid Open Source Project
- * 
- * This file is part of MjSip (http://www.mjsip.org)
- * 
- * MjSip is free software; you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation; either version 2 of the License, or
- * (at your option) any later version.
- * 
- * MjSip is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
- * 
- * You should have received a copy of the GNU General Public License
- * along with MjSip; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
- * 
- * Author(s):
- * Luca Veltri (luca.veltri@unipr.it)
- */
 
 package org.zoolu.net;
 
@@ -30,9 +7,9 @@ import java.net.NetworkInterface;
 import java.net.SocketException;
 import java.util.Enumeration;
 
-import org.sipdroid.sipua.ui.Receiver;
-import org.sipdroid.sipua.ui.Settings;
-import org.sipdroid.sipua.ui.Sipdroid;
+import org.ruby.client.ui.Receiver;
+import org.ruby.client.ui.Settings;
+import org.ruby.client.ui.Ruby;
 
 import android.preference.PreferenceManager;
 import android.content.Context;
@@ -158,10 +135,10 @@ public class IpAddress {
 								//System.out.println("Public ip is:" + StunDiscover.di.getPublicIP().getHostAddress());
 								localIpAddress = StunDiscover.di.getPublicIP().getHostAddress();
 							} catch (BindException be) {
-								if (!Sipdroid.release)
+								if (!Ruby.release)
 									System.out.println(inetAddress.toString() + ": " + be.getMessage());
 							} catch (Exception e) {
-								if (!Sipdroid.release) {
+								if (!Ruby.release) {
 									System.out.println(e.getMessage());
 									e.printStackTrace();
 								}

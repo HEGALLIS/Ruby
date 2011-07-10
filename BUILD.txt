@@ -1,4 +1,4 @@
-Building sipdroid from the command line
+Building from the command line
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 To build the project from the command line, run:

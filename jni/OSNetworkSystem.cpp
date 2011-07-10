@@ -1,23 +1,4 @@
-/*
- * Copyright (C) 2009 The Sipdroid Open Source Project
- * Copyright (C) 2007 The Android Open Source Project
- * 
- * This file is part of Sipdroid (http://www.sipdroid.org)
- * 
- * Sipdroid is free software; you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation; either version 3 of the License, or
- * (at your option) any later version.
- * 
- * This source code is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
- * 
- * You should have received a copy of the GNU General Public License
- * along with this source code; if not, write to the Free Software
- * Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
- */
+
 
 #define LOG_TAG "OSNetworkSystem"
 
@@ -1175,7 +1156,7 @@ static void mcastAddDropMembership (JNIEnv * env, int handle, jobject optVal,
     }
 }
 
-extern "C" void Java_org_sipdroid_net_impl_OSNetworkSystem_oneTimeInitializationImpl(JNIEnv* env, jobject obj,
+extern "C" void Java_org_ruby_net_impl_OSNetworkSystem_oneTimeInitializationImpl(JNIEnv* env, jobject obj,
         jboolean jcl_supports_ipv6) {
     // LOGD("ENTER oneTimeInitializationImpl of OSNetworkSystem");
 
@@ -1429,7 +1410,7 @@ extern "C" void Java_org_sipdroid_net_impl_OSNetworkSystem_oneTimeInitialization
 
 }
 
-extern "C" void Java_org_sipdroid_net_impl_OSNetworkSystem_createSocketImpl(JNIEnv* env, jclass clazz,
+extern "C" void Java_org_ruby_net_impl_OSNetworkSystem_createSocketImpl(JNIEnv* env, jclass clazz,
         jobject fileDescriptor, jboolean preferIPv4Stack) {
     // LOGD("ENTER createSocketImpl");
 
@@ -1446,7 +1427,7 @@ extern "C" void Java_org_sipdroid_net_impl_OSNetworkSystem_createSocketImpl(JNIE
     return;
 }
 
-extern "C" void Java_org_sipdroid_net_impl_OSNetworkSystem_createDatagramSocketImpl(JNIEnv* env, jclass clazz,
+extern "C" void Java_org_ruby_net_impl_OSNetworkSystem_createDatagramSocketImpl(JNIEnv* env, jclass clazz,
         jobject fileDescriptor, jboolean preferIPv4Stack) {
     // LOGD("ENTER createDatagramSocketImpl");
 
@@ -1463,7 +1444,7 @@ extern "C" void Java_org_sipdroid_net_impl_OSNetworkSystem_createDatagramSocketI
     return;
 }
 
-extern "C" jint Java_org_sipdroid_net_impl_OSNetworkSystem_readSocketDirectImpl(JNIEnv* env, jclass clazz,
+extern "C" jint Java_org_ruby_net_impl_OSNetworkSystem_readSocketDirectImpl(JNIEnv* env, jclass clazz,
         jobject fileDescriptor, jint address, jint offset, jint count,
         jint timeout) {
     // LOGD("ENTER readSocketDirectImpl");
@@ -1503,7 +1484,7 @@ extern "C" jint Java_org_sipdroid_net_impl_OSNetworkSystem_readSocketDirectImpl(
     return ret;
 }
 
-extern "C" jint Java_org_sipdroid_net_impl_OSNetworkSystem_readSocketImpl(JNIEnv* env, jclass clazz,
+extern "C" jint Java_org_ruby_net_impl_OSNetworkSystem_readSocketImpl(JNIEnv* env, jclass clazz,
         jobject fileDescriptor, jbyteArray data, jint offset, jint count,
         jint timeout) {
     // LOGD("ENTER readSocketImpl");
@@ -1526,7 +1507,7 @@ extern "C" jint Java_org_sipdroid_net_impl_OSNetworkSystem_readSocketImpl(JNIEnv
         message = (jbyte *)internalBuffer;
     }
 
-    result = Java_org_sipdroid_net_impl_OSNetworkSystem_readSocketDirectImpl(env, clazz, fileDescriptor,
+    result = Java_org_ruby_net_impl_OSNetworkSystem_readSocketDirectImpl(env, clazz, fileDescriptor,
             (jint) message, offset, count, timeout);
 
     if (result > 0) {
@@ -1540,7 +1521,7 @@ extern "C" jint Java_org_sipdroid_net_impl_OSNetworkSystem_readSocketImpl(JNIEnv
     return result;
 }
 
-extern "C" jint Java_org_sipdroid_net_impl_OSNetworkSystem_writeSocketDirectImpl(JNIEnv* env, jclass clazz,
+extern "C" jint Java_org_ruby_net_impl_OSNetworkSystem_writeSocketDirectImpl(JNIEnv* env, jclass clazz,
         jobject fileDescriptor, jint address, jint offset, jint count) {
     // LOGD("ENTER writeSocketDirectImpl");
 
@@ -1603,7 +1584,7 @@ extern "C" jint Java_org_sipdroid_net_impl_OSNetworkSystem_writeSocketDirectImpl
     return result;
 }
 
-extern "C" jint Java_org_sipdroid_net_impl_OSNetworkSystem_writeSocketImpl(JNIEnv* env, jclass clazz,
+extern "C" jint Java_org_ruby_net_impl_OSNetworkSystem_writeSocketImpl(JNIEnv* env, jclass clazz,
         jobject fileDescriptor, jbyteArray data, jint offset, jint count) {
     // LOGD("ENTER writeSocketImpl");
 
@@ -1628,7 +1609,7 @@ extern "C" jint Java_org_sipdroid_net_impl_OSNetworkSystem_writeSocketImpl(JNIEn
 
     env->GetByteArrayRegion(data, offset, count, message);
 
-    result = Java_org_sipdroid_net_impl_OSNetworkSystem_writeSocketDirectImpl(env, clazz, fileDescriptor,
+    result = Java_org_ruby_net_impl_OSNetworkSystem_writeSocketDirectImpl(env, clazz, fileDescriptor,
             (jint) message, offset, count);
 
     if (( jbyte *)message != internalBuffer) {
@@ -1638,7 +1619,7 @@ extern "C" jint Java_org_sipdroid_net_impl_OSNetworkSystem_writeSocketImpl(JNIEn
    return result;
 }
 
-extern "C" void Java_org_sipdroid_net_impl_OSNetworkSystem_setNonBlockingImpl(JNIEnv* env, jclass clazz,
+extern "C" void Java_org_ruby_net_impl_OSNetworkSystem_setNonBlockingImpl(JNIEnv* env, jclass clazz,
         jobject fileDescriptor, jboolean nonblocking) {
     // LOGD("ENTER setNonBlockingImpl");
 
@@ -1661,10 +1642,10 @@ extern "C" void Java_org_sipdroid_net_impl_OSNetworkSystem_setNonBlockingImpl(JN
     }
 }
 
-extern "C" jint Java_org_sipdroid_net_impl_OSNetworkSystem_connectSocketImpl(JNIEnv* env, jclass clazz,
+extern "C" jint Java_org_ruby_net_impl_OSNetworkSystem_connectSocketImpl(JNIEnv* env, jclass clazz,
         jobject fileDescriptor, jint trafficClass, jobject inetAddr, jint port);
 
-extern "C" jint Java_org_sipdroid_net_impl_OSNetworkSystem_connectWithTimeoutSocketImpl(JNIEnv* env,
+extern "C" jint Java_org_ruby_net_impl_OSNetworkSystem_connectWithTimeoutSocketImpl(JNIEnv* env,
         jclass clazz, jobject fileDescriptor, jint timeout, jint trafficClass,
         jobject inetAddr, jint port, jint step, jbyteArray passContext) {
     // LOGD("ENTER connectWithTimeoutSocketImpl");
@@ -1688,7 +1669,7 @@ extern "C" jint Java_org_sipdroid_net_impl_OSNetworkSystem_connectWithTimeoutSoc
 
     // Check if we're using adb networking and redirect in case it is used.
     if (useAdbNetworking && !isLocalhost(&address)) {
-        return Java_org_sipdroid_net_impl_OSNetworkSystem_connectSocketImpl(env, clazz, fileDescriptor,
+        return Java_org_ruby_net_impl_OSNetworkSystem_connectSocketImpl(env, clazz, fileDescriptor,
                 trafficClass, inetAddr, port);
     }
 
@@ -1734,7 +1715,7 @@ extern "C" jint Java_org_sipdroid_net_impl_OSNetworkSystem_connectWithTimeoutSoc
     return result;
 }
 
-extern "C" void Java_org_sipdroid_net_impl_OSNetworkSystem_connectStreamWithTimeoutSocketImpl(JNIEnv* env,
+extern "C" void Java_org_ruby_net_impl_OSNetworkSystem_connectStreamWithTimeoutSocketImpl(JNIEnv* env,
         jclass clazz, jobject fileDescriptor, jint remotePort, jint timeout,
         jint trafficClass, jobject inetAddr) {
     // LOGD("ENTER connectStreamWithTimeoutSocketImpl");
@@ -1771,7 +1752,7 @@ extern "C" void Java_org_sipdroid_net_impl_OSNetworkSystem_connectStreamWithTime
 
         // Check if we're using adb networking and redirect in case it is used.
         if (useAdbNetworking && !isLocalhost(&address)) {
-            int retVal = Java_org_sipdroid_net_impl_OSNetworkSystem_connectSocketImpl(env, clazz,
+            int retVal = Java_org_ruby_net_impl_OSNetworkSystem_connectSocketImpl(env, clazz,
                     fileDescriptor, trafficClass, inetAddr, remotePort);
             if (retVal != 0) {
                 throwSocketException(env, SOCKERR_BADSOCKET);
@@ -1893,7 +1874,7 @@ bail:
     }
 }
 
-extern "C" jint Java_org_sipdroid_net_impl_OSNetworkSystem_connectSocketImpl(JNIEnv* env, jclass clazz,
+extern "C" jint Java_org_ruby_net_impl_OSNetworkSystem_connectSocketImpl(JNIEnv* env, jclass clazz,
         jobject fileDescriptor, jint trafficClass, jobject inetAddr, jint port) {
     //LOGD("ENTER direct-call connectSocketImpl\n");
 
@@ -1933,7 +1914,7 @@ extern "C" jint Java_org_sipdroid_net_impl_OSNetworkSystem_connectSocketImpl(JNI
     } else {
 
         // call this method with a timeout of zero
-        Java_org_sipdroid_net_impl_OSNetworkSystem_connectStreamWithTimeoutSocketImpl(env, clazz,
+        Java_org_ruby_net_impl_OSNetworkSystem_connectStreamWithTimeoutSocketImpl(env, clazz,
                 fileDescriptor, port, 0, trafficClass, inetAddr);
         if (env->ExceptionOccurred() != 0) {
             return -1;
@@ -1952,7 +1933,7 @@ extern "C" jint Java_org_sipdroid_net_impl_OSNetworkSystem_connectSocketImpl(JNI
     return ret;
 }
 
-extern "C" void Java_org_sipdroid_net_impl_OSNetworkSystem_socketBindImpl(JNIEnv* env, jclass clazz,
+extern "C" void Java_org_ruby_net_impl_OSNetworkSystem_socketBindImpl(JNIEnv* env, jclass clazz,
         jobject fileDescriptor, jint port, jobject inetAddress) {
     // LOGD("ENTER socketBindImpl");
 
@@ -1984,7 +1965,7 @@ extern "C" void Java_org_sipdroid_net_impl_OSNetworkSystem_socketBindImpl(JNIEnv
     }
 }
 
-extern "C" void Java_org_sipdroid_net_impl_OSNetworkSystem_listenStreamSocketImpl(JNIEnv* env, jclass clazz,
+extern "C" void Java_org_ruby_net_impl_OSNetworkSystem_listenStreamSocketImpl(JNIEnv* env, jclass clazz,
         jobject fileDescriptor, jint backlog) {
     // LOGD("ENTER listenStreamSocketImpl");
 
@@ -2008,7 +1989,7 @@ extern "C" void Java_org_sipdroid_net_impl_OSNetworkSystem_listenStreamSocketImp
     }
 }
 
-extern "C" jint Java_org_sipdroid_net_impl_OSNetworkSystem_availableStreamImpl(JNIEnv* env, jclass clazz,
+extern "C" jint Java_org_ruby_net_impl_OSNetworkSystem_availableStreamImpl(JNIEnv* env, jclass clazz,
         jobject fileDescriptor) {
     // LOGD("ENTER availableStreamImpl");
 
@@ -2051,7 +2032,7 @@ extern "C" jint Java_org_sipdroid_net_impl_OSNetworkSystem_availableStreamImpl(J
     return result;
 }
 
-extern "C" void Java_org_sipdroid_net_impl_OSNetworkSystem_acceptSocketImpl(JNIEnv* env, jclass clazz,
+extern "C" void Java_org_ruby_net_impl_OSNetworkSystem_acceptSocketImpl(JNIEnv* env, jclass clazz,
         jobject fdServer, jobject newSocket, jobject fdnewSocket, jint timeout) {
     // LOGD("ENTER acceptSocketImpl");
 
@@ -2126,7 +2107,7 @@ extern "C" void Java_org_sipdroid_net_impl_OSNetworkSystem_acceptSocketImpl(JNIE
     jniSetFileDescriptorOfFD(env, fdnewSocket, retFD);
 }
 
-extern "C" jboolean Java_org_sipdroid_net_impl_OSNetworkSystem_supportsUrgentDataImpl(JNIEnv* env,
+extern "C" jboolean Java_org_ruby_net_impl_OSNetworkSystem_supportsUrgentDataImpl(JNIEnv* env,
         jclass clazz, jobject fileDescriptor) {
     // LOGD("ENTER supportsUrgentDataImpl");
 
@@ -2140,7 +2121,7 @@ extern "C" jboolean Java_org_sipdroid_net_impl_OSNetworkSystem_supportsUrgentDat
     return JNI_TRUE;
 }
 
-extern "C" void Java_org_sipdroid_net_impl_OSNetworkSystem_sendUrgentDataImpl(JNIEnv* env, jclass clazz,
+extern "C" void Java_org_ruby_net_impl_OSNetworkSystem_sendUrgentDataImpl(JNIEnv* env, jclass clazz,
         jobject fileDescriptor, jbyte value) {
     // LOGD("ENTER sendUrgentDataImpl");
 
@@ -2161,7 +2142,7 @@ extern "C" void Java_org_sipdroid_net_impl_OSNetworkSystem_sendUrgentDataImpl(JN
     }
 }
 
-extern "C" void Java_org_sipdroid_net_impl_OSNetworkSystem_connectDatagramImpl2(JNIEnv* env, jclass clazz,
+extern "C" void Java_org_ruby_net_impl_OSNetworkSystem_connectDatagramImpl2(JNIEnv* env, jclass clazz,
         jobject fd, jint port, jint trafficClass, jobject inetAddress) {
     // LOGD("ENTER connectDatagramImpl2");
 
@@ -2185,7 +2166,7 @@ extern "C" void Java_org_sipdroid_net_impl_OSNetworkSystem_connectDatagramImpl2(
     }
 }
 
-extern "C" void Java_org_sipdroid_net_impl_OSNetworkSystem_disconnectDatagramImpl(JNIEnv* env, jclass clazz,
+extern "C" void Java_org_ruby_net_impl_OSNetworkSystem_disconnectDatagramImpl(JNIEnv* env, jclass clazz,
         jobject fd) {
     // LOGD("ENTER disconnectDatagramImpl");
 
@@ -2207,7 +2188,7 @@ extern "C" void Java_org_sipdroid_net_impl_OSNetworkSystem_disconnectDatagramImp
     }
 }
 
-extern "C" jboolean Java_org_sipdroid_net_impl_OSNetworkSystem_socketBindImpl2(JNIEnv* env, jclass clazz,
+extern "C" jboolean Java_org_ruby_net_impl_OSNetworkSystem_socketBindImpl2(JNIEnv* env, jclass clazz,
         jobject fileDescriptor, jint port, jboolean bindToDevice,
         jobject inetAddress) {
     // LOGD("ENTER socketBindImpl2");
@@ -2242,7 +2223,7 @@ extern "C" jboolean Java_org_sipdroid_net_impl_OSNetworkSystem_socketBindImpl2(J
     return 0;
 }
 
-extern "C" jint Java_org_sipdroid_net_impl_OSNetworkSystem_peekDatagramImpl(JNIEnv* env, jclass clazz,
+extern "C" jint Java_org_ruby_net_impl_OSNetworkSystem_peekDatagramImpl(JNIEnv* env, jclass clazz,
         jobject fd, jobject sender, jint receiveTimeout) {
     // LOGD("ENTER peekDatagramImpl");
 
@@ -2281,7 +2262,7 @@ extern "C" jint Java_org_sipdroid_net_impl_OSNetworkSystem_peekDatagramImpl(JNIE
     return port;
 }
 
-extern "C" jint Java_org_sipdroid_net_impl_OSNetworkSystem_receiveDatagramDirectImpl(JNIEnv* env, jclass clazz,
+extern "C" jint Java_org_ruby_net_impl_OSNetworkSystem_receiveDatagramDirectImpl(JNIEnv* env, jclass clazz,
         jobject fd, jobject packet, jint address, jint offset, jint length,
         jint receiveTimeout, jboolean peek) {
     // LOGD("ENTER receiveDatagramDirectImpl");
@@ -2334,7 +2315,7 @@ extern "C" jint Java_org_sipdroid_net_impl_OSNetworkSystem_receiveDatagramDirect
     return actualLength;
 }
 
-extern "C" jint Java_org_sipdroid_net_impl_OSNetworkSystem_receiveDatagramImpl(JNIEnv* env, jclass clazz,
+extern "C" jint Java_org_ruby_net_impl_OSNetworkSystem_receiveDatagramImpl(JNIEnv* env, jclass clazz,
         jobject fd, jobject packet, jbyteArray data, jint offset, jint length,
         jint receiveTimeout, jboolean peek) {
     // LOGD("ENTER receiveDatagramImpl");
@@ -2347,7 +2328,7 @@ extern "C" jint Java_org_sipdroid_net_impl_OSNetworkSystem_receiveDatagramImpl(J
         return 0;
     }
 
-    int actualLength = Java_org_sipdroid_net_impl_OSNetworkSystem_receiveDatagramDirectImpl(env, clazz, fd,
+    int actualLength = Java_org_ruby_net_impl_OSNetworkSystem_receiveDatagramDirectImpl(env, clazz, fd,
             packet, (jint)bytes, offset, localLength, receiveTimeout, peek);
 
     if (actualLength > 0) {
@@ -2358,7 +2339,7 @@ extern "C" jint Java_org_sipdroid_net_impl_OSNetworkSystem_receiveDatagramImpl(J
     return actualLength;
 }
 
-extern "C" jint Java_org_sipdroid_net_impl_OSNetworkSystem_recvConnectedDatagramDirectImpl(JNIEnv* env,
+extern "C" jint Java_org_ruby_net_impl_OSNetworkSystem_recvConnectedDatagramDirectImpl(JNIEnv* env,
         jclass clazz, jobject fd, jobject packet, jint address, jint offset,
         jint length, jint receiveTimeout, jboolean peek) {
     // LOGD("ENTER receiveConnectedDatagramDirectImpl");
@@ -2393,7 +2374,7 @@ extern "C" jint Java_org_sipdroid_net_impl_OSNetworkSystem_recvConnectedDatagram
     return actualLength;
 }
 
-extern "C" jint Java_org_sipdroid_net_impl_OSNetworkSystem_recvConnectedDatagramImpl(JNIEnv* env, jclass clazz,
+extern "C" jint Java_org_ruby_net_impl_OSNetworkSystem_recvConnectedDatagramImpl(JNIEnv* env, jclass clazz,
         jobject fd, jobject packet, jbyteArray data, jint offset, jint length,
         jint receiveTimeout, jboolean peek) {
     // LOGD("ENTER receiveConnectedDatagramImpl");
@@ -2406,7 +2387,7 @@ extern "C" jint Java_org_sipdroid_net_impl_OSNetworkSystem_recvConnectedDatagram
         return 0;
     }
 
-    int actualLength = Java_org_sipdroid_net_impl_OSNetworkSystem_recvConnectedDatagramDirectImpl(env,
+    int actualLength = Java_org_ruby_net_impl_OSNetworkSystem_recvConnectedDatagramDirectImpl(env,
             clazz, fd, packet, (jint)bytes, offset, localLength,
             receiveTimeout, peek);
 
@@ -2418,7 +2399,7 @@ extern "C" jint Java_org_sipdroid_net_impl_OSNetworkSystem_recvConnectedDatagram
     return actualLength;
 }
 
-extern "C" jint Java_org_sipdroid_net_impl_OSNetworkSystem_sendDatagramDirectImpl(JNIEnv* env, jclass clazz,
+extern "C" jint Java_org_ruby_net_impl_OSNetworkSystem_sendDatagramDirectImpl(JNIEnv* env, jclass clazz,
         jobject fd, jint address, jint offset, jint length, jint port,
         jboolean bindToDevice, jint trafficClass, jobject inetAddress) {
     // LOGD("ENTER sendDatagramDirectImpl");
@@ -2457,13 +2438,13 @@ extern "C" jint Java_org_sipdroid_net_impl_OSNetworkSystem_sendDatagramDirectImp
     return result;
 }
 
-extern "C" jint Java_org_sipdroid_net_impl_OSNetworkSystem_sendDatagramImpl(JNIEnv* env, jclass clazz,
+extern "C" jint Java_org_ruby_net_impl_OSNetworkSystem_sendDatagramImpl(JNIEnv* env, jclass clazz,
         jobject fd, jbyteArray data, jint offset, jint length, jint port,
         jboolean bindToDevice, jint trafficClass, jobject inetAddress) {
     // LOGD("ENTER sendDatagramImpl");
 
     jbyte *bytes = env->GetByteArrayElements(data, NULL);
-    int actualLength = Java_org_sipdroid_net_impl_OSNetworkSystem_sendDatagramDirectImpl(env, clazz, fd,
+    int actualLength = Java_org_ruby_net_impl_OSNetworkSystem_sendDatagramDirectImpl(env, clazz, fd,
             (jint)bytes, offset, length, port, bindToDevice, trafficClass,
             inetAddress);
     env->ReleaseByteArrayElements(data, bytes, JNI_ABORT);
@@ -2471,7 +2452,7 @@ extern "C" jint Java_org_sipdroid_net_impl_OSNetworkSystem_sendDatagramImpl(JNIE
     return actualLength;
 }
 
-extern "C" jint Java_org_sipdroid_net_impl_OSNetworkSystem_sendConnectedDatagramDirectImpl(JNIEnv* env,
+extern "C" jint Java_org_ruby_net_impl_OSNetworkSystem_sendConnectedDatagramDirectImpl(JNIEnv* env,
         jclass clazz, jobject fd, jint address, jint offset, jint length,
         jboolean bindToDevice) {
     // LOGD("ENTER sendConnectedDatagramDirectImpl");
@@ -2499,20 +2480,20 @@ extern "C" jint Java_org_sipdroid_net_impl_OSNetworkSystem_sendConnectedDatagram
     return result;
 }
 
-extern "C" jint Java_org_sipdroid_net_impl_OSNetworkSystem_sendConnectedDatagramImpl(JNIEnv* env, jclass clazz,
+extern "C" jint Java_org_ruby_net_impl_OSNetworkSystem_sendConnectedDatagramImpl(JNIEnv* env, jclass clazz,
         jobject fd, jbyteArray data, jint offset, jint length,
         jboolean bindToDevice) {
     // LOGD("ENTER sendConnectedDatagramImpl");
 
     jbyte *bytes = env->GetByteArrayElements(data, NULL);
-    int actualLength = Java_org_sipdroid_net_impl_OSNetworkSystem_sendConnectedDatagramDirectImpl(env,
+    int actualLength = Java_org_ruby_net_impl_OSNetworkSystem_sendConnectedDatagramDirectImpl(env,
             clazz, fd, (jint)bytes, offset, length, bindToDevice);
     env->ReleaseByteArrayElements(data, bytes, JNI_ABORT);
 
     return actualLength;
 }
 
-extern "C" void Java_org_sipdroid_net_impl_OSNetworkSystem_createServerStreamSocketImpl(JNIEnv* env,
+extern "C" void Java_org_ruby_net_impl_OSNetworkSystem_createServerStreamSocketImpl(JNIEnv* env,
         jclass clazz, jobject fileDescriptor, jboolean preferIPv4Stack) {
     // LOGD("ENTER createServerStreamSocketImpl");
 
@@ -2536,7 +2517,7 @@ extern "C" void Java_org_sipdroid_net_impl_OSNetworkSystem_createServerStreamSoc
     setsockopt(handle, SOL_SOCKET, SO_REUSEADDR, &value, sizeof(int));
 }
 
-extern "C" void Java_org_sipdroid_net_impl_OSNetworkSystem_createMulticastSocketImpl(JNIEnv* env,
+extern "C" void Java_org_ruby_net_impl_OSNetworkSystem_createMulticastSocketImpl(JNIEnv* env,
         jclass clazz, jobject fileDescriptor, jboolean preferIPv4Stack) {
     // LOGD("ENTER createMulticastSocketImpl");
 
@@ -2559,7 +2540,7 @@ extern "C" void Java_org_sipdroid_net_impl_OSNetworkSystem_createMulticastSocket
 /*
  * @param timeout in milliseconds.  If zero, block until data received
  */
-extern "C" jint Java_org_sipdroid_net_impl_OSNetworkSystem_receiveStreamImpl(JNIEnv* env, jclass clazz,
+extern "C" jint Java_org_ruby_net_impl_OSNetworkSystem_receiveStreamImpl(JNIEnv* env, jclass clazz,
         jobject fileDescriptor, jbyteArray data, jint offset, jint count,
         jint timeout) {
     // LOGD("ENTER receiveStreamImpl");
@@ -2615,7 +2596,7 @@ extern "C" jint Java_org_sipdroid_net_impl_OSNetworkSystem_receiveStreamImpl(JNI
     }
 }
 
-extern "C" jint Java_org_sipdroid_net_impl_OSNetworkSystem_sendStreamImpl(JNIEnv* env, jclass clazz,
+extern "C" jint Java_org_ruby_net_impl_OSNetworkSystem_sendStreamImpl(JNIEnv* env, jclass clazz,
         jobject fileDescriptor, jbyteArray data, jint offset, jint count) {
     // LOGD("ENTER sendStreamImpl");
 
@@ -2664,7 +2645,7 @@ extern "C" jint Java_org_sipdroid_net_impl_OSNetworkSystem_sendStreamImpl(JNIEnv
     return sent;
 }
 
-extern "C" void Java_org_sipdroid_net_impl_OSNetworkSystem_shutdownInputImpl(JNIEnv* env, jobject obj,
+extern "C" void Java_org_ruby_net_impl_OSNetworkSystem_shutdownInputImpl(JNIEnv* env, jobject obj,
         jobject fileDescriptor) {
     // LOGD("ENTER shutdownInputImpl");
 
@@ -2688,7 +2669,7 @@ extern "C" void Java_org_sipdroid_net_impl_OSNetworkSystem_shutdownInputImpl(JNI
     }
 }
 
-extern "C" void Java_org_sipdroid_net_impl_OSNetworkSystem_shutdownOutputImpl(JNIEnv* env, jobject obj,
+extern "C" void Java_org_ruby_net_impl_OSNetworkSystem_shutdownOutputImpl(JNIEnv* env, jobject obj,
         jobject fileDescriptor) {
     // LOGD("ENTER shutdownOutputImpl");
 
@@ -2711,7 +2692,7 @@ extern "C" void Java_org_sipdroid_net_impl_OSNetworkSystem_shutdownOutputImpl(JN
     }
 }
 
-extern "C" jint Java_org_sipdroid_net_impl_OSNetworkSystem_sendDatagramImpl2(JNIEnv* env, jclass clazz,
+extern "C" jint Java_org_ruby_net_impl_OSNetworkSystem_sendDatagramImpl2(JNIEnv* env, jclass clazz,
         jobject fd, jbyteArray data, jint offset, jint length, jint port,
         jobject inetAddress) {
     // LOGD("ENTER sendDatagramImpl2");
@@ -2780,7 +2761,7 @@ extern "C" jint Java_org_sipdroid_net_impl_OSNetworkSystem_sendDatagramImpl2(JNI
     return sent;
 }
 
-extern "C" jint Java_org_sipdroid_net_impl_OSNetworkSystem_selectImpl(JNIEnv* env, jclass clazz,
+extern "C" jint Java_org_ruby_net_impl_OSNetworkSystem_selectImpl(JNIEnv* env, jclass clazz,
         jobjectArray readFDArray, jobjectArray writeFDArray, jint countReadC,
         jint countWriteC, jintArray outFlags, jlong timeout) {
     // LOGD("ENTER selectImpl");
@@ -2887,7 +2868,7 @@ extern "C" jint Java_org_sipdroid_net_impl_OSNetworkSystem_selectImpl(JNIEnv* en
     return result;
 }
 
-extern "C" jobject Java_org_sipdroid_net_impl_OSNetworkSystem_getSocketLocalAddressImpl(JNIEnv* env,
+extern "C" jobject Java_org_ruby_net_impl_OSNetworkSystem_getSocketLocalAddressImpl(JNIEnv* env,
         jclass clazz, jobject fileDescriptor, jboolean preferIPv6Addresses) {
     // LOGD("ENTER getSocketLocalAddressImpl");
 
@@ -2913,7 +2894,7 @@ extern "C" jobject Java_org_sipdroid_net_impl_OSNetworkSystem_getSocketLocalAddr
 
 }
 
-extern "C" jint Java_org_sipdroid_net_impl_OSNetworkSystem_getSocketLocalPortImpl(JNIEnv* env, jclass clazz,
+extern "C" jint Java_org_ruby_net_impl_OSNetworkSystem_getSocketLocalPortImpl(JNIEnv* env, jclass clazz,
         jobject fileDescriptor, jboolean preferIPv6Addresses) {
     // LOGD("ENTER getSocketLocalPortImpl");
 
@@ -2938,7 +2919,7 @@ extern "C" jint Java_org_sipdroid_net_impl_OSNetworkSystem_getSocketLocalPortImp
     }
 }
 
-extern "C" jobject Java_org_sipdroid_net_impl_OSNetworkSystem_getSocketOptionImpl(JNIEnv* env, jclass clazz,
+extern "C" jobject Java_org_ruby_net_impl_OSNetworkSystem_getSocketOptionImpl(JNIEnv* env, jclass clazz,
         jobject fileDescriptor, jint anOption) {
     // LOGD("ENTER getSocketOptionImpl");
 
@@ -3088,7 +3069,7 @@ extern "C" jobject Java_org_sipdroid_net_impl_OSNetworkSystem_getSocketOptionImp
 
 }
 
-extern "C" void Java_org_sipdroid_net_impl_OSNetworkSystem_setSocketOptionImpl(JNIEnv* env, jclass clazz,
+extern "C" void Java_org_ruby_net_impl_OSNetworkSystem_setSocketOptionImpl(JNIEnv* env, jclass clazz,
         jobject fileDescriptor, jint anOption, jobject optVal) {
     // LOGD("ENTER setSocketOptionImpl");
 
@@ -3284,14 +3265,14 @@ extern "C" void Java_org_sipdroid_net_impl_OSNetworkSystem_setSocketOptionImpl(J
     }
 }
 
-extern "C" jint Java_org_sipdroid_net_impl_OSNetworkSystem_getSocketFlagsImpl(JNIEnv* env, jclass clazz) {
+extern "C" jint Java_org_ruby_net_impl_OSNetworkSystem_getSocketFlagsImpl(JNIEnv* env, jclass clazz) {
     // LOGD("ENTER getSocketFlagsImpl");
 
     // Not implemented by harmony
     return 0;
 }
 
-extern "C" void Java_org_sipdroid_net_impl_OSNetworkSystem_socketCloseImpl(JNIEnv* env, jclass clazz,
+extern "C" void Java_org_ruby_net_impl_OSNetworkSystem_socketCloseImpl(JNIEnv* env, jclass clazz,
         jobject fileDescriptor) {
     // LOGD("ENTER socketCloseImpl");
 
@@ -3309,7 +3290,7 @@ extern "C" void Java_org_sipdroid_net_impl_OSNetworkSystem_socketCloseImpl(JNIEn
     close(handle);
 }
 
-extern "C" jobject Java_org_sipdroid_net_impl_OSNetworkSystem_getHostByAddrImpl(JNIEnv* env, jclass clazz,
+extern "C" jobject Java_org_ruby_net_impl_OSNetworkSystem_getHostByAddrImpl(JNIEnv* env, jclass clazz,
         jbyteArray addrStr) {
     // LOGD("ENTER getHostByAddrImpl");
 
@@ -3335,7 +3316,7 @@ extern "C" jobject Java_org_sipdroid_net_impl_OSNetworkSystem_getHostByAddrImpl(
     return result;
 }
 
-extern "C" jobject Java_org_sipdroid_net_impl_OSNetworkSystem_getHostByNameImpl(JNIEnv* env, jclass clazz,
+extern "C" jobject Java_org_ruby_net_impl_OSNetworkSystem_getHostByNameImpl(JNIEnv* env, jclass clazz,
         jstring nameStr, jboolean preferIPv6Addresses) {
     // LOGD("ENTER getHostByNameImpl");
 
@@ -3391,7 +3372,7 @@ extern "C" jobject Java_org_sipdroid_net_impl_OSNetworkSystem_getHostByNameImpl(
     }
 }
 
-extern "C" void Java_org_sipdroid_net_impl_OSNetworkSystem_setInetAddressImpl(JNIEnv* env, jobject obj,
+extern "C" void Java_org_ruby_net_impl_OSNetworkSystem_setInetAddressImpl(JNIEnv* env, jobject obj,
         jobject sender, jbyteArray address) {
     // LOGD("ENTER setInetAddressImpl");
 
@@ -3399,7 +3380,7 @@ extern "C" void Java_org_sipdroid_net_impl_OSNetworkSystem_setInetAddressImpl(JN
 }
 
 /*
-extern "C" jobject Java_org_sipdroid_net_impl_OSNetworkSystem_inheritedChannelImpl(JNIEnv* env, jobject obj) {
+extern "C" jobject Java_org_ruby_net_impl_OSNetworkSystem_inheritedChannelImpl(JNIEnv* env, jobject obj) {
     // LOGD("ENTER inheritedChannelImpl");
 
     int socket = 0;
