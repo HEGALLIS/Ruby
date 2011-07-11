@@ -12,7 +12,7 @@ public class OneShotLocation extends BroadcastReceiver {
 	public static void receive(Context context, Intent intent) {
 		Location loc;
 
-		if (!Ruby.release) Log.i("SipUA:",intent.getExtras().keySet().toString());
+		if (!Ruby.release) Log.i("Client:",intent.getExtras().keySet().toString());
     	if (Receiver.mContext == null) Receiver.mContext = context;
     	loc = (Location)intent.getParcelableExtra(LocationManager.KEY_LOCATION_CHANGED);
     	if (loc != null) {

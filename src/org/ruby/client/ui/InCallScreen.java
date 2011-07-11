@@ -100,7 +100,7 @@ public class InCallScreen extends CallScreen implements View.OnClickListener, Se
 	@Override
 	public void onPause() {
 		super.onPause();
-    	if (!Ruby.release) Log.i("SipUA:","on pause");
+    	if (!Ruby.release) Log.i("Client:","on pause");
     	switch (Receiver.call_state) {
     	case UserAgent.UA_STATE_INCOMING_CALL:
     		if (!RtpStreamReceiver.isBluetoothAvailable()) Receiver.moveTop();
@@ -134,7 +134,7 @@ public class InCallScreen extends CallScreen implements View.OnClickListener, Se
 	@Override
 	public void onResume() {
 		super.onResume();
-    	if (!Ruby.release) Log.i("SipUA:","on resume");
+    	if (!Ruby.release) Log.i("Client:","on resume");
 		switch (Receiver.call_state) {
 		case UserAgent.UA_STATE_INCOMING_CALL:
 			if (Receiver.pstn_state == null || Receiver.pstn_state.equals("IDLE"))

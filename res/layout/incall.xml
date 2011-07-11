@@ -1,11 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <AbsoluteLayout
-android:id="@+id/top_lvl_layout"
-android:layout_width="fill_parent"
-android:layout_height="fill_parent"
-android:background="#000000"
-xmlns:android="http://schemas.android.com/apk/res/android"
->
+android:layout_height="fill_parent" android:background="#000000" xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="fill_parent" android:id="@+id/top_lvl_layout">
 
    <FrameLayout android:id="@+id/mainFrame"
         android:layout_width="fill_parent"
@@ -128,7 +123,7 @@ xmlns:android="http://schemas.android.com/apk/res/android"
         android:content="@+id/dtmf_dialer"
 		android:allowSingleTap="false">
 		
-       <ImageButton
+		<ImageButton
            android:id="@id/dialer_tab"
            android:layout_width="fill_parent"
            android:layout_height="wrap_content"
@@ -137,8 +132,8 @@ xmlns:android="http://schemas.android.com/apk/res/android"
 
         <include
             layout="@layout/dtmf_twelve_key_dialer"
-            android:id="@id/dtmf_dialer"/>
+            android:id="@id/dtmf_dialer"/>		
 
     </SlidingDrawer>
-
+	
 </AbsoluteLayout>

@@ -10,7 +10,7 @@ public class OneShotAlarm2 extends BroadcastReceiver {
 
     @Override
 	public void onReceive(Context context, Intent intent) {
-    	if (!Ruby.release) Log.i("SipUA:","alarm2");
+    	if (!Ruby.release) Log.i("Client:","alarm2");
         if (PreferenceManager.getDefaultSharedPreferences(context).getBoolean(Settings.PREF_WLAN, Settings.DEFAULT_WLAN) ||
         		PreferenceManager.getDefaultSharedPreferences(context).getBoolean(Settings.PREF_3G, Settings.DEFAULT_3G) ||
         		PreferenceManager.getDefaultSharedPreferences(context).getBoolean(Settings.PREF_VPN, Settings.DEFAULT_VPN) ||

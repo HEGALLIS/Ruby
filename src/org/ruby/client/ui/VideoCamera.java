@@ -178,7 +178,7 @@ public class VideoCamera extends CallScreen implements
 
 	@Override
     public void onResume() {
-		if (!Ruby.release) Log.i("SipUA:","on resume");
+		if (!Ruby.release) Log.i("Client:","on resume");
         justplay = intent.hasExtra("justplay");
         if (!justplay) {
 			receiver = new LocalSocket();

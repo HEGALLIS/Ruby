@@ -488,7 +488,7 @@ import org.zoolu.sip.provider.SipProvider;
 		}
 		
 		public static void alarm(int renew_time,Class <?>cls) {
-       		if (!Ruby.release) Log.i("SipUA:","alarm "+renew_time);
+       		if (!Ruby.release) Log.i("Client:","alarm "+renew_time);
 	        Intent intent = new Intent(mContext, cls);
 	        PendingIntent sender = PendingIntent.getBroadcast(mContext,
 	                0, intent, 0);
@@ -609,7 +609,7 @@ import org.zoolu.sip.provider.SipProvider;
         			PreferenceManager.getDefaultSharedPreferences(mContext).getString(org.ruby.client.ui.Settings.PREF_SERVER+(i!=0?i:""),"").equals(""))
         		return false;
         	if (wi != null) {
-        		if (!Ruby.release) Log.i("SipUA:","isFastWifi() "+WifiInfo.getDetailedStateOf(wi.getSupplicantState())
+        		if (!Ruby.release) Log.i("Client:","isFastWifi() "+WifiInfo.getDetailedStateOf(wi.getSupplicantState())
         				+" "+wi.getIpAddress());
 	        	if (wi.getIpAddress() != 0 && (WifiInfo.getDetailedStateOf(wi.getSupplicantState()) == DetailedState.OBTAINING_IPADDR
 	        			|| WifiInfo.getDetailedStateOf(wi.getSupplicantState()) == DetailedState.CONNECTED)) {
@@ -669,7 +669,7 @@ import org.zoolu.sip.provider.SipProvider;
 		public void onReceive(Context context, Intent intent) {
 	        String intentAction = intent.getAction();
 	        if (!Ruby.on(context)) return;
-        	if (!Ruby.release) Log.i("SipUA:",intentAction);
+        	if (!Ruby.release) Log.i("Client:",intentAction);
         	if (mContext == null) mContext = context;
 	        if (intentAction.equals(Intent.ACTION_BOOT_COMPLETED)){
 	        	on_vpn(false);
@@ -780,7 +780,7 @@ import org.zoolu.sip.provider.SipProvider;
 		                if (bestconfig != null && bestconfig.priority != maxconfig.priority &&
 		                		asu(bestscan) > asu(maxscan)*1.5 &&
 		                		(activeSSID == null || activeFound)) {
-		               		if (!Ruby.release) Log.i("SipUA:","changing to "+bestconfig.SSID);
+		               		if (!Ruby.release) Log.i("Client:","changing to "+bestconfig.SSID);
 		               		if (activeSSID == null || !activeSSID.equals(bestscan.SSID))
 		               			wm.disconnect();
 		                	bestconfig.priority = maxconfig.priority + 1;

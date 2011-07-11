@@ -39,7 +39,7 @@ public class Caller extends BroadcastReceiver {
 	        
 	        if (intentAction.equals(Intent.ACTION_NEW_OUTGOING_CALL) && number != null)
 	        {
-        		if (!Ruby.release) Log.i("SipUA:","outgoing call");
+        		if (!Ruby.release) Log.i("Client:","outgoing call");
         		if (!Ruby.on(context)) return;
     			boolean sip_type = !PreferenceManager.getDefaultSharedPreferences(context).getString(Settings.PREF_PREF, Settings.DEFAULT_PREF).equals(Settings.VAL_PREF_PSTN);
     	        boolean ask = PreferenceManager.getDefaultSharedPreferences(context).getString(Settings.PREF_PREF, Settings.DEFAULT_PREF).equals(Settings.VAL_PREF_ASK);
